@@ -12,4 +12,9 @@ class AuthService:
 
     """
 
+    DATA_PATH = "data/usuarios.json"
+
+    def __init__(self):
+        self.__usuario = self.cargarUsuarios()
+
     
