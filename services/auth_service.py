@@ -15,7 +15,7 @@ class AuthService:
     DATA_PATH = "data/usuarios.json"
 
     def __init__(self):
-        self.__usuarios = self.cargarUsuarios()
+        self.usuarios = self.cargarUsuarios()
 
     
     # CARGA Y GUARDADO
@@ -28,4 +28,10 @@ class AuthService:
         with open(self.DATA_PATH, "r") as f:
             return json.load(f)
 
-        
+    
+    def guardarUsuarios(self):
+        """ Guarda los usuarios en el archivo JSON."""
+        with open(self.DATA_PATH, "w") as f:
+            json.dump(self.usuarios, f, indent= 4)
+            
+
