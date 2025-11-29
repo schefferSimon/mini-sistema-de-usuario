@@ -21,7 +21,9 @@ class AuthService:
     # CARGA Y GUARDADO
 
     def cargarUsuarios(self):
+
         """ Carga los usuarios desde el archivo JSON."""
+
         if not os.path.exists(self.DATA_PATH):
             return {}
 
@@ -30,8 +32,19 @@ class AuthService:
 
     
     def guardarUsuarios(self):
+
         """ Guarda los usuarios en el archivo JSON."""
+        
         with open(self.DATA_PATH, "w") as f:
             json.dump(self.usuarios, f, indent= 4)
             
+    
+    #HASH DE CONTRASEÑA
 
+    def hashearPassword(self, password):
+
+        """
+        Convierte una contraseña de texto plano en un has seguro.
+        """
+
+        return hashlib.sha256(password.encode()).hexdigest()
