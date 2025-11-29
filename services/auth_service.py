@@ -63,4 +63,20 @@ class AuthService:
         self.guardarUsuarios()
 
         return True, "Usuario registrado correctamente"
+
+
+    #LOGIN
+
+    def login(self, userName, password):
+        """Verifica si un usuario puede iniciar sesion"""
+        
+        if userName not in self.usuarios:
+            return False, "Usuario no registrado"
+
+        passwordHash = self.hashearPassword(password)
+
+        if self.usuarios[userName] == passwordHash:
+            return True ,"Inicio de sesion exitosa"
+        else:
+            return False, "Contraseña incorrecta"
         
